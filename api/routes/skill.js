@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const skill_1 = require("../controllers/skill");
+var multipart = require('connect-multiparty');
+var multipartMiddleware = multipart({ uploadDir: './imagenes' });
+exports.router_skill = express_1.Router();
+exports.router_skill.get('/skill/getall', skill_1.controller_skill.getAll);
+exports.router_skill.post('/skill/create', multipartMiddleware, skill_1.controller_skill.create);
+exports.router_skill.post('/skill/update', skill_1.controller_skill.update);
